@@ -1,0 +1,24 @@
+#
+# /etc/jlocate.rc - Settings used by jlocate
+# Mostly compatible with BSD Locate's /etc/locate.rc
+#
+
+# For storing temporary files (advised to be a ramdisk)
+TMPDIR="/tmp"
+
+# Location of the database (excluding possible compression extension)
+FDIR="/var/db/jlocate"
+FCODES="${FDIR}/files.db"
+
+# Search locations
+SEARCH_PATHS="/"
+
+# Do not include in output (/dev, /proc, /sys and /tmp are included by default)
+PRUNE_PATHS="/compat/linux/dev /compat/linux/proc /compat/linux/sys /usr/obj /usr/tmp /var/tmp /var/db/freebsd-update /var/db/portsnap"
+PRUNE_NAMES=".git .svn"
+
+# Compression method and settings
+COMPRESS="pbzip2"
+UNCOMPRESS="pbzip2 -d"
+EXTENSION="bz2"
+COMPRESSFLAGS="-1f"
