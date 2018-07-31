@@ -6,7 +6,8 @@ compression.
 
 ## Installation
 To install jlocate, run `make install` (does not override any existing implementations of locate(1)). 
-Your user must be a member of the 'wheel' group to read the database.
+Your user must be a member of the 'wheel' group to read the database.  
+To uninstall jlocate, run `make uninstall` (this removes jlocate and the jlocate database).
 
 ## Configuration
 The config file is /etc/jlocate.rc, which can configure the location of 

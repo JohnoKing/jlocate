@@ -24,6 +24,10 @@ install:
 	install -Dm0644 jlocate.rc $(DESTDIR)/etc
 	install -Dm0755 jlocate jupdatedb $(DESTDIR)/usr/local/bin
 
+# Remove jlocate from the system
+uninstall:
+	rm -rf $(DESTDIR)/etc/jlocate.rc $(DESTDIR)/usr/local/bin/jlocate $(DESTDIR)/usr/local/bin/jupdatedb $(DESTDIR)/var/db/jlocate
+
 # Resets the git repo
 clobber:
 	git reset --hard
