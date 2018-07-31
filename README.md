@@ -1,6 +1,6 @@
 jlocate
 =======
-_Multi-process implementation of locate(1)_
+_Multi-process implementation of locate(1)_  
 This is a small multi-process implementation of locate(1) with configurable 
 compression.
 
