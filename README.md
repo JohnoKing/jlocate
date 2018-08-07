@@ -1,5 +1,6 @@
 jlocate
 =======
+**The primary repo has been moved to https://gitlab.com/JohnoKing/jlocate.git**
 _Multi-process implementation of locate(1)_  
 This is a small multi-process implementation of locate(1) with configurable 
 compression.
