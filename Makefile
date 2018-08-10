@@ -30,7 +30,7 @@ all:
 # Install jlocate without overriding existing implementations of locate(1)
 install:
 	mkdir -p $(DESTDIR)/etc $(DESTDIR)/usr/local/bin $(DESTDIR)/usr/local/man/man1
-	install -Dm0644 jlocate.rc $(DESTDIR)/etc
+	if [ ! -r $(DESTDIR)/etc/jlocate.rc ]; then install -Dm0644 jlocate.rc $(DESTDIR)/etc; fi
 	install -Dm0644 fork.1 $(DESTDIR)/usr/local/man/man1/jfork.1
 	install -Dm0755 jfork jlocate jupdatedb $(DESTDIR)/usr/local/bin
 
