@@ -10,12 +10,18 @@ TMPDIR="/tmp"
 FDIR="/var/db/jlocate"
 FCODES="${FDIR}/files.db"
 
-# Search locations
+# Search the following locations
+# Paths MUST end in a '/'
+# Example: SEARCH_PATHS="/bin/ /usr/ /etc/"
 SEARCH_PATHS="/"
 
 # Do not include in output (/dev, /proc, /sys and /tmp are included by default)
 PRUNE_PATHS="/compat/linux/dev /compat/linux/proc /compat/linux/sys /usr/obj /usr/tmp /var/tmp /var/db/freebsd-update /var/db/portsnap"
 PRUNE_NAMES=".git .svn"
+
+# Run find with extra options or primaries
+#FINDOPTS=""
+#FINDPRIM=""
 
 # Compression method and settings
 COMPRESS="pbzip2"
