@@ -42,7 +42,7 @@ done
 
 # Prune paths if needed
 if [ "$PRUNE_PATHS" != "" ]; then
-	cat ${TMPDIR}/jlocate-*.tdb | grep -Ev "`echo $PRUNE_PATHS $PRUNE_NAMES | sed 's: :|:g'`" > ${FCODES}
+	cat ${TMPDIR}/jlocate-*.tdb | grep "$@" -Ev "`echo $PRUNE_PATHS $PRUNE_NAMES | sed 's: :|:g'`" > ${FCODES}
 else
 	cat ${TMPDIR}/jlocate-*.tdb > ${FCODES}
 fi
