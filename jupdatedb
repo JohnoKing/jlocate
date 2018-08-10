@@ -30,7 +30,7 @@
 mkdir -p ${FDIR}
 rm -f ${FDIR}/*
 
-# Build the database with multi-threading
+# Build the database using jfork(1) to run multiple instances of find(1)
 for dir in `ls / | sed 's/tmp//g' | sed 's/proc//g' | sed 's/dev//g' | sed 's/sys//g'`; do
 	jfork "find /${dir} > ${TMPDIR}/jlocate-${dir}.tdb"
 done
