@@ -11,7 +11,7 @@ FDIR="/var/db/jlocate"
 FCODES="${FDIR}/files.db"
 
 # Search the following locations
-# Paths MUST end in a '/'
+# Paths MUST end with a '/'
 # Example: SEARCH_PATHS="/bin/ /usr/ /etc/"
 SEARCH_PATHS="/"
 
