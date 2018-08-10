@@ -26,34 +26,18 @@
 # Load the configuration
 . /etc/jlocate.rc
 
-# This must be run as root
-if [ "`id -u`" != "0" ]; then
-	echo "jupdatedb must be run as root!"
-	exit 1
-fi
-
-# FreeBSD and Linux use different programs for forking processes
-if [ `uname` = "FreeBSD" ]; then
-	FORK="daemon"
-elif [ `uname` = "Linux" ]; then
-	FORK="setsid"
-fi
-
 # Make sure $FDIR exists and is a clean directory
 mkdir -p ${FDIR}
 rm -f ${FDIR}/*
 
 # Build the database with multi-threading
 for dir in `ls / | sed 's/tmp//g' | sed 's/proc//g' | sed 's/dev//g' | sed 's/sys//g'`; do
-	$FORK find /${dir} > ${TMPDIR}/jlocate-${dir}.tdb
+	jfork "find /${dir} > ${TMPDIR}/jlocate-${dir}.tdb"
 done
 
 # Wait until all instances of find(1) are done searching
-while true; do
-	sleep 2
-	if [ "`pgrep -x find`" = "" ];
-		then break
-	fi
+until [ "`pgrep -x find`" = "" ]; do
+	false
 done
 
 # Prune paths if needed
