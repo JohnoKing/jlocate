@@ -19,29 +19,20 @@
 # SOFTWARE.
 #
 
-# Variables
-CC     := cc
-CFLAGS := -O2 -fno-math-errno -fomit-frame-pointer -pipe
-
-# Compile jfork(1)
+# Tells the user to run `make install`
 all:
-	$(CC) $(CFLAGS) -o jfork fork.c $(LDFLAGS)
+	echo 'To install jlocate, run `make install`'
 
 # Install jlocate without overriding existing implementations of locate(1)
 install:
-	mkdir -p $(DESTDIR)/etc $(DESTDIR)/usr/local/bin $(DESTDIR)/usr/local/man/man1
+	mkdir -p $(DESTDIR)/etc $(DESTDIR)/usr/local/bin
 	if [ ! -r $(DESTDIR)/etc/jlocate.rc ]; then install -Dm0644 jlocate.rc $(DESTDIR)/etc; fi
-	install -Dm0644 fork.1 $(DESTDIR)/usr/local/man/man1/jfork.1
-	install -Dm0755 jfork jlocate jupdatedb $(DESTDIR)/usr/local/bin
+	install -Dm0755 jlocate jupdatedb $(DESTDIR)/usr/local/bin
 
 # Remove jlocate from the system
 uninstall:
-	rm -rf $(DESTDIR)/etc/jlocate.rc $(DESTDIR)/usr/local/bin/jlocate $(DESTDIR)/usr/local/bin/jupdatedb $(DESTDIR)/usr/local/man/man1/jfork.1 $(DESTDIR)/usr/local/bin/jfork $(DESTDIR)/var/db/jlocate
+	rm -rf $(DESTDIR)/etc/jlocate.rc $(DESTDIR)/usr/local/bin/jlocate $(DESTDIR)/usr/local/bin/jupdatedb $(DESTDIR)/var/db/jlocate
 
-# Deletes the compiled jfork binary
-clean:
-	rm -f jfork
-
-# Calls clean, then resets the git repo
-clobber: clean
+# Resets the git repo
+clobber:
 	git reset --hard

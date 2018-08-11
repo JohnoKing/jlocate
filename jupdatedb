@@ -30,10 +30,10 @@
 mkdir -p ${FDIR}
 rm -f ${FDIR}/*
 
-# Build the database using jfork(1) to run multiple instances of find(1)
+# Build the database using multiple instances of find(1)
 for search in $SEARCH_PATHS; do
 	for dir in $(ls $search | sed 's/tmp//g' | sed 's/proc//g' | sed 's/dev//g' | sed 's/sys//g'); do
-		jfork "find ${FINDOPTS} ${SEARCH_PATHS}${dir} ${FINDPRIM} > ${TMPDIR}/jlocate-${dir}.tdb"
+		find ${FINDOPTS} ${SEARCH_PATHS}${dir} ${FINDPRIM} > ${TMPDIR}/jlocate-${dir}.tdb &
 	done
 done
 
