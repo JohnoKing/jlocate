@@ -38,9 +38,7 @@ for search in $SEARCH_PATHS; do
 done
 
 # Wait until all instances of find(1) are done searching
-until [ "$(pgrep -x find)" = "" ]; do
-	false
-done
+wait
 
 # Prune paths if needed
 if [ "$PRUNE_PATHS" != "" ]; then
