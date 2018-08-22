@@ -31,9 +31,9 @@ mkdir -p ${FDIR}
 rm -f ${FDIR}/*
 
 # Build the database using multiple instances of find(1)
-for search in $SEARCH_PATHS; do
-	for dir in $(ls $search | sed 's/tmp//g' | sed 's/proc//g' | sed 's/dev//g' | sed 's/sys//g'); do
-		find ${FINDOPTS} ${SEARCH_PATHS}${dir} ${FINDPRIM} > ${TMPDIR}/jlocate-${dir}.tdb &
+for search in "$SEARCH_PATHS"; do
+	for dir in $(ls $search/ | sed 's/tmp//g' | sed 's/proc//g' | sed 's/dev//g' | sed 's/sys//g'); do
+		find ${FINDOPTS} ${SEARCH_PATHS}/${dir} ${FINDPRIM} > ${TMPDIR}/jlocate-${dir}.tdb &
 	done
 done
 

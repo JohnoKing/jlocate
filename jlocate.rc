@@ -11,9 +11,8 @@ FDIR="/var/db/jlocate"
 FCODES="${FDIR}/files.db"
 
 # Search the following locations
-# Paths MUST end with a '/'
-# Example: SEARCH_PATHS="/bin/ /usr/ /etc/"
-SEARCH_PATHS="/"
+# Example: SEARCH_PATHS="/bin /usr /etc"
+#SEARCH_PATHS="/"
 
 # Do not include in output (/dev, /proc, /sys and /tmp are included by default)
 PRUNE_PATHS="/compat/linux/dev /compat/linux/proc /compat/linux/sys /usr/obj /usr/tmp /var/tmp /var/db/freebsd-update /var/db/portsnap"
