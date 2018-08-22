@@ -56,7 +56,7 @@ if [ "$1" = -c ]; then
 fi
 
 # Done for security purposes
-chown nobody:wheel ${FCODES}*
+chown nobody:${GROUP} ${FCODES}*
 chmod 0440 ${FCODES}*
 
 # Finish
