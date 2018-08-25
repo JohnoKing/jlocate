@@ -32,7 +32,7 @@ rm -f ${FDIR}/*
 
 # Build the database using multiple instances of find(1)
 for s in "${SEARCH_PATHS}"; do
-	find ${FINDOPTS} ${s}/ ${FINDPRIM} > ${TMPDIR}/jlocate-${s}.tdb &
+	${FINDPROG} ${FINDOPTS} ${s}/ ${FINDPRIM} > ${TMPDIR}/jlocate-${s}.tdb &
 done
 
 # Wait until all instances of find(1) are done searching
