@@ -27,12 +27,12 @@
 . /etc/jlocate.rc
 
 # Make sure $FDIR exists and is a clean directory
-mkdir -p ${FDIR}
-rm -f ${FDIR}/*
+mkdir -p "${FDIR}"
+rm -f "${FDIR}/*"
 
 # Build the database using multiple instances of find(1)
 for s in "${SEARCH_PATHS}"; do
-	${FINDPROG} ${FINDOPTS} ${s}/ ${FINDPRIM} > ${TMPDIR}/jlocate-${s}.tdb &
+	"${FINDPROG}" ${FINDOPTS} ${s}/ ${FINDPRIM} > ${TMPDIR}/jlocate-${s}.tdb &
 done
 
 # Wait until all instances of find(1) are done searching
@@ -40,9 +40,9 @@ wait
 
 # Prune paths if needed
 if [ -n "$PRUNE_PATHS" ]; then
-	cat ${TMPDIR}/jlocate-*.tdb | grep -Ev "$(echo $PRUNE_PATHS $PRUNE_NAMES | sed 's: :|:g')" > ${FCODES}
+	cat ${TMPDIR}/jlocate-*.tdb | grep -Ev "$(echo $PRUNE_PATHS $PRUNE_NAMES | sed 's: :|:g')" > "${FCODES}"
 else
-	cat ${TMPDIR}/jlocate-*.tdb > ${FCODES}
+	cat ${TMPDIR}/jlocate-*.tdb > "${FCODES}"
 fi
 
 # Done to prevent bugs
@@ -50,12 +50,12 @@ rm -f ${TMPDIR}/jlocate*.tdb
 
 # Optional compression (configurable)
 if [ "$1" = "-c" ]; then
-	${COMPRESS} ${COMPRESSFLAGS} ${FCODES}
+	${COMPRESS} ${COMPRESSFLAGS} "${FCODES}"
 fi
 
 # Done for security purposes
-chown nobody:${GROUP} ${FCODES}*
-chmod 0440 ${FCODES}*
+chown "nobody:${GROUP}" "${FCODES}*"
+chmod 0440 "${FCODES}*"
 
 # Finish
 exit 0
