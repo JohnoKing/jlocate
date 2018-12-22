@@ -21,17 +21,19 @@
 
 # Tells the user to run `make install`
 all:
-	echo 'To install jlocate, run `make install`'
+	@echo 'To install jlocate, run `make install`'
 
 # Install jlocate without overriding existing implementations of locate(1)
 install:
-	mkdir -p $(DESTDIR)/etc $(DESTDIR)/usr/local/bin
-	if [ ! -r $(DESTDIR)/etc/jlocate.rc ]; then install -Dm0644 jlocate.rc $(DESTDIR)/etc; fi
-	install -Dm0755 jlocate jupdatedb $(DESTDIR)/usr/local/bin
+	@mkdir -p $(DESTDIR)/etc $(DESTDIR)/usr/local/bin
+	@if [ ! -r $(DESTDIR)/etc/jlocate.rc ]; then install -Dm0644 jlocate.rc $(DESTDIR)/etc; fi
+	@install -Dm0755 jlocate jupdatedb $(DESTDIR)/usr/local/bin
+	@echo "Successfully installed jlocate!"
 
 # Remove jlocate from the system
 uninstall:
-	rm -rf $(DESTDIR)/etc/jlocate.rc $(DESTDIR)/usr/local/bin/jlocate $(DESTDIR)/usr/local/bin/jupdatedb $(DESTDIR)/var/db/jlocate
+	@rm -rf $(DESTDIR)/etc/jlocate.rc $(DESTDIR)/usr/local/bin/jlocate $(DESTDIR)/usr/local/bin/jupdatedb $(DESTDIR)/var/db/jlocate
+	@echo "Successfully uninstalled jlocate!"
 
 # Resets the git repo
 clobber:
