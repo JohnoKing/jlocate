@@ -38,3 +38,6 @@ uninstall:
 # Resets the git repo
 clobber:
 	git reset --hard
+
+# Alias for clobber
+mrproper: clobber
