@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Copyright (c) 2018 Johnothan King. All rights reserved.
+# Copyright (c) 2018-2019 Johnothan King. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -42,13 +42,13 @@ wait
 
 # Prune paths if needed
 if [ -n "$PRUNE_PATHS" ]; then
-	cat ${TMPDIR}/jlocate-*.tdb | grep -Ev "$(echo $PRUNE_PATHS $PRUNE_NAMES | sed 's: :|:g')" > "${FCODES}"
+	cat "${TMPDIR}"/jlocate-*.tdb | grep -Ev "$(echo $PRUNE_PATHS $PRUNE_NAMES | sed 's: :|:g')" > "${FCODES}"
 else
-	cat ${TMPDIR}/jlocate-*.tdb > "${FCODES}"
+	cat "${TMPDIR}"/jlocate-*.tdb > "${FCODES}"
 fi
 
 # Done to prevent bugs
-rm -f ${TMPDIR}/jlocate*.tdb
+rm -f "${TMPDIR}"/jlocate*.tdb
 
 # Optional compression (configurable)
 if [ "$1" = "-c" ]; then
