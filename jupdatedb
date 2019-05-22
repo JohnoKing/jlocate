@@ -35,10 +35,12 @@ if [ -n "${SEARCH_PATHS}" ]; then
 	for s in ${SEARCH_PATHS}; do
 		"${FINDPROG}" ${FINDOPTS} ${s}/ ${FINDPRIM} > "${TMPDIR}/jlocate-${s}.tdb" &
 	done
-fi
 
-# Wait until all instances of find(1) are done searching
-wait
+	# Wait until all instances of find(1) are done searching
+	wait
+else
+	"${FINDPROG}" ${FINDOPTS} / ${FINDPRIM} > "${TMPDIR}/jlocate-${s}.tdb"
+fi
 
 # Prune paths if needed
 if [ -n "$PRUNE_PATHS" ]; then
