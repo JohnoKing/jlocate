@@ -35,7 +35,7 @@ uninstall:
 	@rm -rf $(DESTDIR)/etc/jlocate.rc $(DESTDIR)/usr/local/bin/jlocate $(DESTDIR)/usr/local/bin/jupdatedb $(DESTDIR)/var/db/jlocate
 	@echo "Successfully uninstalled jlocate!"
 
-# Resets the git repo
+# Reset the git repo
 clobber:
 	git reset --hard
 
