@@ -54,7 +54,7 @@ rm -f "${TMPDIR}"/jlocate*.tdb
 
 # Optional compression (configurable)
 if [ "$1" = "-c" ]; then
-	${COMPRESS} ${COMPRESSFLAGS} "${FCODES}"
+	"${COMPRESS}" ${COMPRESSFLAGS} "${FCODES}"
 fi
 
 # Done for security purposes
