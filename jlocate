@@ -28,20 +28,20 @@
 
 # This must be run as root
 if [ -z "$1" ]; then
-    echo "You must provide jlocate with a query!"
-    exit 1
+	echo 'You must provide jlocate with a query!'
+	exit 1
 fi
 
 # Read compressed databases
 if [ -r "${FCODES}.${EXTENSION}" ]; then
-    "$UNCOMPRESS" -c "${FCODES}.${EXTENSION}" | grep "$@"
+	"$UNCOMPRESS" -c "${FCODES}.${EXTENSION}" | grep "$@"
 
 # Read uncompressed databases
 elif [ -r "${FCODES}" ]; then
-    exec grep "$@" "${FCODES}"
+	exec grep "$@" "${FCODES}"
 
 # Fallback
 else
-    echo 'Please run `jupdatedb` to make the file database for jlocate.'
-    exit 1
+	echo 'Please run `jupdatedb` to make the file database for jlocate.'
+	exit 1
 fi
