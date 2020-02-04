@@ -24,9 +24,9 @@ FINDPROG="/usr/bin/find"
 #FINDPRIM=""
 
 # Compression method and settings
-COMPRESS="pbzip2"
-UNCOMPRESS="pbzip2 -d"
-EXTENSION="bz2"
+COMPRESS="zstd"
+UNCOMPRESS="zstd -d"
+EXTENSION="zst"
 COMPRESSFLAGS=""
 
 # This is the group the jlocate database will be owned by
