@@ -1,4 +1,4 @@
-# Copyright (c) 2018 Johnothan King. All rights reserved.
+# Copyright (c) 2018-2020 Johnothan King. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@ all:
 # Install jlocate without overriding existing implementations of locate(1)
 install:
 	@mkdir -p "$(DESTDIR)/etc" "$(DESTDIR)/usr/local/bin"
-	@if [ ! -r "$(DESTDIR)/etc/jlocate.rc" ]; then install -Dm0644 jlocate.rc "$(DESTDIR)/etc"; fi
+	@if [ ! -e "$(DESTDIR)/etc/jlocate.rc" ]; then install -Dm0644 jlocate.rc "$(DESTDIR)/etc"; fi
 	@install -Dm0755 jlocate jupdatedb "$(DESTDIR)/usr/local/bin"
 	@echo "Successfully installed jlocate!"
 
