@@ -24,7 +24,7 @@
 #
 
 # Load the configuration
-. /etc/jlocate.rc
+. /etc/jlocate.conf
 
 # Make sure $FDIR exists and is a clean directory
 mkdir -p "${FDIR}"

@@ -24,7 +24,7 @@
 #
 
 # Load the configuration
-. /etc/jlocate.rc
+. /etc/jlocate.conf
 
 # This must be run as root
 if [ -z "$1" ]; then
