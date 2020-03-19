@@ -19,6 +19,9 @@
 # SOFTWARE.
 #
 
+# Support a prefix of either /usr or /usr/local
+prefix := /usr/local
+
 # Tells the user to run `make install`
 all:
 	@echo 'To install jlocate, run `make install`'
@@ -32,7 +35,7 @@ install:
 
 # Remove jlocate from the system
 uninstall:
-	@rm -rf "$(DESTDIR)/etc/jlocate.conf" "$(DESTDIR)/usr/local/bin/jlocate" "$(DESTDIR)/usr/local/bin/jupdatedb" "$(DESTDIR)/var/db/jlocate"
+	@rm -rf "$(DESTDIR)/etc/jlocate.conf" "$(DESTDIR)/$(prefix)/bin/jlocate" "$(DESTDIR)/$(prefix)/bin/jupdatedb" "$(DESTDIR)/var/db/jlocate"
 	@echo "Successfully uninstalled jlocate!"
 
 # Optimize the git repo's size
