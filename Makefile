@@ -26,11 +26,23 @@ prefix := /usr/local
 all:
 	@echo 'To install jlocate, run `make install`'
 
-# Install jlocate without overriding existing implementations of locate(1)
+# Install jlocate without overriding existing implementations of locate(1), parsing of #DEF is done here
 install:
 	@mkdir -p "$(DESTDIR)/etc" "$(DESTDIR)/usr/local/bin"
 	@if [ ! -e "$(DESTDIR)/etc/jlocate.conf" ]; then install -Dm0644 jlocate.conf "$(DESTDIR)/etc"; fi
 	@install -Dm0755 jlocate jupdatedb "$(DESTDIR)/usr/local/bin"
+	@if [ `uname` = FreeBSD ]; then \
+		sed -i '' "/#DEF Linux/,/#ENDEF/d" "$(DESTDIR)/etc/jlocate.conf" ;\
+		sed -i '' "/#DEF FreeBSD/d"        "$(DESTDIR)/etc/jlocate.conf" ;\
+		sed -i '' "/#ENDEF/d"              "$(DESTDIR)/etc/jlocate.conf" ;\
+	elif [ `uname` = Linux ]; then \
+		sed -i "/#DEF FreeBSD/,/#ENDEF/d" "$(DESTDIR)/etc/jlocate.conf" ;\
+		sed -i "/#DEF Linux/d"            "$(DESTDIR)/etc/jlocate.conf" ;\
+		sed -i "/#ENDEF/d"                "$(DESTDIR)/etc/jlocate.conf" ;\
+	else \
+		echo "`uname` is not supported by LeanInit!" ;\
+		false ;\
+	fi
 	@echo "Successfully installed jlocate!"
 
 # Remove jlocate from the system
@@ -40,8 +52,8 @@ uninstall:
 
 # Optimize the git repo's size
 clean:
-	@git gc
-	@git repack
+	@git gc >> /dev/null 2> /dev/null
+	@git repack >> /dev/null 2> /dev/null
 
 # Reset the git repo
 clobber: clean
