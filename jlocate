@@ -27,17 +27,17 @@
 . /etc/jlocate.conf
 
 # This must be run as root
-if ! test "$1"; then
+if [ ! "$1" ]; then
 	echo 'You must provide jlocate with a query!'
 	exit 1
 fi
 
 # Read compressed databases
-if test -e "$FCODES.$EXTENSION"; then
+if [ -e "$FCODES.$EXTENSION" ]; then
 	"$UNCOMPRESS" -c "$FCODES.$EXTENSION" | grep "$@"
 
 # Read uncompressed databases
-elif test -e "$FCODES"; then
+elif [ -e "$FCODES" ]; then
 	exec grep "$@" "$FCODES"
 
 # Fallback
