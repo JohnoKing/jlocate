@@ -33,11 +33,11 @@ if [ ! "$1" ]; then
 fi
 
 # Read compressed databases
-if [ -e "$FCODES.$EXTENSION" ]; then
+if [ -f "$FCODES.$EXTENSION" ]; then
 	"$UNCOMPRESS" -c "$FCODES.$EXTENSION" | grep "$@"
 
 # Read uncompressed databases
-elif [ -e "$FCODES" ]; then
+elif [ -f "$FCODES" ]; then
 	exec grep "$@" "$FCODES"
 
 # Fallback
