@@ -49,7 +49,7 @@ uninstall:
 
 # Optimize the git repo's size
 clean:
-	@git gc >> /dev/null 2> /dev/null
+	@git gc 2> /dev/null
 	@git repack >> /dev/null 2> /dev/null
 
 # Reset the git repo
