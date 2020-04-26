@@ -29,7 +29,7 @@ all:
 # Install jlocate without overriding existing implementations of locate(1), parsing of #DEF is done here
 install:
 	@mkdir -p "$(DESTDIR)/etc" "$(DESTDIR)/$(prefix)/bin"
-	@if [ ! -e "$(DESTDIR)/etc/jlocate.conf" ]; then install -Dm0644 jlocate.conf "$(DESTDIR)/etc"; fi
+	@[ ! -e "$(DESTDIR)/etc/jlocate.conf" ] && install -Dm0644 jlocate.conf "$(DESTDIR)/etc"
 	@install -Dm0755 jlocate jupdatedb "$(DESTDIR)/$(prefix)/bin"
 	@if [ `uname` = FreeBSD ]; then \
 		sed -i '' "/#DEF Linux/,/#ENDEF/d" "$(DESTDIR)/etc/jlocate.conf" ;\
