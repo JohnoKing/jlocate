@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# updatedb - Update the locate(1) database
+# jupdatedb -- Update the jlocate database
 #
 
 # Load the configuration

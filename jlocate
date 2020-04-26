@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# Multi-process locate(1) command
+# jlocate -- Multi-process implementation of locate(1)
 #
 
 # Load the configuration
