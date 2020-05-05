@@ -20,7 +20,7 @@
 #
 
 # Support a prefix of either /usr or /usr/local
-prefix = /usr/local
+prefix := /usr/local
 
 # Tells the user to run `make install`
 all:
