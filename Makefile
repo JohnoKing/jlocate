@@ -50,7 +50,7 @@ uninstall:
 # Optimize the git repo's size
 clean:
 	@git gc 2> /dev/null
-	@git repack >> /dev/null 2> /dev/null
+	@git repack > /dev/null 2>&1
 
 # Reset the git repo
 clobber: clean
