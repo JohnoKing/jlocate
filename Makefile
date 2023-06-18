@@ -32,12 +32,12 @@ install:
 	@[ ! -e "$(DESTDIR)/etc/jlocate.conf" ] && install -Dm0644 jlocate.conf "$(DESTDIR)/etc"
 	@install -Dm0755 jlocate jupdatedb "$(DESTDIR)/$(prefix)/bin"
 	@if [ `uname` = FreeBSD ]; then \
-		sed -i '' "/#DEF Linux/,/#ENDEF/d" "$(DESTDIR)/etc/jlocate.conf" ;\
-		sed -i '' "/#DEF FreeBSD/d"        "$(DESTDIR)/etc/jlocate.conf" ;\
-		sed -i '' "/#ENDEF/d"              "$(DESTDIR)/etc/jlocate.conf" ;\
+		sed -i '' "/#DEF Default/,/#ENDEF/d" "$(DESTDIR)/etc/jlocate.conf" ;\
+		sed -i '' "/#DEF FreeBSD/d"          "$(DESTDIR)/etc/jlocate.conf" ;\
+		sed -i '' "/#ENDEF/d"                "$(DESTDIR)/etc/jlocate.conf" ;\
 	else \
 		sed -i "/#DEF FreeBSD/,/#ENDEF/d" "$(DESTDIR)/etc/jlocate.conf" ;\
-		sed -i "/#DEF Linux/d"            "$(DESTDIR)/etc/jlocate.conf" ;\
+		sed -i "/#DEF Default/d"          "$(DESTDIR)/etc/jlocate.conf" ;\
 		sed -i "/#ENDEF/d"                "$(DESTDIR)/etc/jlocate.conf" ;\
 	fi
 	@echo "Successfully installed jlocate!"
